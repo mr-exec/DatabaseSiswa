@@ -40,6 +40,7 @@ def nilailulus(db):
             exit("Maaf Input Melebihi Maximal 100")
         cursor.execute(sql, data5)
         db.commit()
+        print("{} Data berhasil di masukan".format(cursor.rowcount))
 
     else:
         if data4 <= 74:
@@ -48,7 +49,7 @@ def nilailulus(db):
                 exit("Maaf Input Melebihi Minimum 0")
             cursor.execute(sql2, data5)
             db.commit()
-    print("{} Data berhasil di masukan".format(cursor.rowcount))
+            print("{} Data berhasil di masukan".format(cursor.rowcount))
 # Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
     print("Apakah anda ingin kembali ke menu [Y/N]")
     print("Y. untuk kembali ke Menu semula")
