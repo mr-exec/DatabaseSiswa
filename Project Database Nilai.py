@@ -18,6 +18,7 @@
 #*
 #Database Connect------------------------------------------------------------------------------------------------------
 import mysql.connector
+import os
 db = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -35,20 +36,26 @@ def nilailulus(db):
     cursor = db.cursor()
     if data4 >= 75:
         sql = "INSERT INTO siswa (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
+        while data4 > 100:
+            exit("Maaf Input Melebihi Maximal 100")
         cursor.execute(sql, data5)
         db.commit()
+
     else:
         if data4 <= 74:
             sql2 = "INSERT INTO nolulus (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
+            while data4 < 0:
+                exit("Maaf Input Melebihi Minimum 0")
             cursor.execute(sql2, data5)
-        db.commit()
-# Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
+            db.commit()
     print("{} Data berhasil di masukan".format(cursor.rowcount))
+# Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
     print("Apakah anda ingin kembali ke menu [Y/N]")
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -99,6 +106,7 @@ def updatedatalulus(db):
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -125,6 +133,7 @@ def updatedatanolulus(db):
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -152,6 +161,7 @@ def caridatalulus(db):
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -180,6 +190,7 @@ def caridatatdklulus(db):
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -196,13 +207,14 @@ def deletelulus(db):
     val = (no,)
     cursor.execute(sql, val)
     db.commit()
-    print("{} Data Telah di DELETE".format(cursor.rowcount))
+    ("{} Data Telah di DELETE".format(cursor.rowcount))
 # Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
     print("Apakah anda ingin kembali ke menu [Y/N]")
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -226,6 +238,7 @@ def deletetdklulus(db):
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
     if menu == "Y":
+        os.system("cls")
         Menu()
     else:
         if menu == "N":
@@ -253,24 +266,34 @@ def Menu():
 #Program Menu
     menu = input("Masukan Menu Yg Akan Di Pilih :")
     if menu == "1":
+        os.system("cls")
         nilailulus(db)
     elif menu == "2":
+        os.system("cls")
         lihatdatalulus(db)
     elif menu == "3":
+        os.system("cls")
         lihatdatanolulus(db)
     elif menu == "4":
+        os.system("cls")
         updatedatalulus(db)
     elif menu == "5":
+        os.system("cls")
         updatedatanolulus(db)
     elif menu == "6":
+        os.system("cls")
         caridatalulus(db)
     elif menu == "7":
+        os.system("cls")
         caridatatdklulus(db)
     elif menu == "8":
+        os.system("cls")
         deletelulus(db)
     elif menu == "9":
+        os.system("cls")
         deletetdklulus(db)
     elif menu == "0":
+        os.system("cls")
         exit("Terima Kasih")
     else:
         print("Maaf Input Salah")
