@@ -19,6 +19,7 @@
 #Database Connect------------------------------------------------------------------------------------------------------
 import mysql.connector
 import os
+import time
 db = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -55,6 +56,11 @@ def nilailulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -75,6 +81,7 @@ def lihatdatalulus(db):
     else:
         for data in results:
             print(data)
+    time.sleep(10)
 #melihat data yg tidak lulus ------------------------------------------------------------------------------------------
 def lihatdatanolulus(db):
     cursor = db.cursor()
@@ -87,6 +94,7 @@ def lihatdatanolulus(db):
     else:
         for data in results:
             print(data)
+    time.sleep(10)
 #update data ----------------------------------------------------------------------------------------------------------
 def updatedatalulus(db):
     print("Update Data Yg Tidak Remidial")
@@ -106,6 +114,11 @@ def updatedatalulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -133,6 +146,11 @@ def updatedatanolulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -161,6 +179,11 @@ def caridatalulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -190,6 +213,11 @@ def caridatatdklulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -214,6 +242,11 @@ def deletelulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -238,6 +271,11 @@ def deletetdklulus(db):
     print("Y. untuk kembali ke Menu semula")
     print("N. Untuk Keluar")
     menu = str(input("Masukan pilihan anda :"))
+    if menu == None:
+        print("Anda Harus Memasukan Input")
+        exit("")
+    else:
+        pass
     if menu == "Y":
         os.system("cls")
         Menu()
@@ -249,7 +287,7 @@ def deletetdklulus(db):
 #Menu Pemilihan -------------------------------------------------------------------------------------------------------
 def Menu():
     print("\33[31m-----------------------------------------------------------------\33[31m")
-    print("\33[1;34m----       DATA : INSERT/UPDATE/DELETE/SHOW/FASTSEARCH       ----\33[1;31m")
+    print("\33[1;34m----   Tools Membatu Guru Memasukan Daftar Nilai Harian      ----\33[1;31m")
     print("\33[30m-----------------------------------------------------------------\33[30m")
     print("\33[33m-----------------------------------------------------------------\33[33m")
     print("\33[1;34m----                 create by 90s Rabbits                   ----\33[1;34m")
@@ -268,30 +306,75 @@ def Menu():
     menu = input("Masukan Menu Yg Akan Di Pilih :")
     if menu == "1":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         nilailulus(db)
     elif menu == "2":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         lihatdatalulus(db)
     elif menu == "3":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         lihatdatanolulus(db)
     elif menu == "4":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         updatedatalulus(db)
     elif menu == "5":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         updatedatanolulus(db)
     elif menu == "6":
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         os.system("cls")
         caridatalulus(db)
     elif menu == "7":
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         os.system("cls")
         caridatatdklulus(db)
     elif menu == "8":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         deletelulus(db)
     elif menu == "9":
         os.system("cls")
+        if menu == None:
+            print("Anda Harus Memasukan Input")
+            exit("")
+        else:
+            pass
         deletetdklulus(db)
     elif menu == "0":
         os.system("cls")
