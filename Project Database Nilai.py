@@ -35,11 +35,13 @@ def nilailulus(db):
     data4 = int(input("Masukan Nilai :"))
     data5 = (data1, data2, data3, data4)
     cursor = db.cursor()
-    if data4 >= 75:
+    if data4 in range(0,100):
         try:
             sql = "INSERT INTO siswa (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
             while data4 > 100:
                 exit("Maaf Input Melebihi Maximal 100")
+            while data4 < 0:
+                exit("Maaf Input Melebihi Minimum 0")
             cursor.execute(sql, data5)
             db.commit()
             print("{} Data berhasil di masukan".format(cursor.rowcount))
@@ -47,16 +49,7 @@ def nilailulus(db):
             exit("[Exit]Keybord Interrupt")
 
     else:
-        if data4 <= 74:
-            try:
-                sql2 = "INSERT INTO nolulus (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
-                while data4 < 0:
-                    exit("Maaf Input Melebihi Minimum 0")
-                cursor.execute(sql2, data5)
-                db.commit()
-                print("{} Data berhasil di masukan".format(cursor.rowcount))
-            except KeyboardInterrupt:
-                exit("[Exit]Keybord Interrupt")
+        print("Maaf Input Salah")
 # Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
     print("Apakah anda ingin kembali ke menu [Y/N]")
     print("Y. untuk kembali ke Menu semula")
@@ -78,7 +71,7 @@ def nilailulus(db):
 #melihat data yg lulus ------------------------------------------------------------------------------------------------
 def lihatdatalulus(db):
     cursor = db.cursor()
-    sql = "SELECT * FROM siswa"
+    sql = "SELECT * FROM siswa WHERE NILAI >75"
     cursor.execute(sql)
     results = cursor.fetchall()
 
@@ -87,11 +80,10 @@ def lihatdatalulus(db):
     else:
         for data in results:
             print(data)
-    time.sleep(10)
 #melihat data yg tidak lulus ------------------------------------------------------------------------------------------
 def lihatdatanolulus(db):
     cursor = db.cursor()
-    sql = "SELECT * FROM nolulus"
+    sql = "SELECT * FROM siswa WHERE NILAI <75"
     cursor.execute(sql)
     results = cursor.fetchall()
 
@@ -100,7 +92,6 @@ def lihatdatanolulus(db):
     else:
         for data in results:
             print(data)
-    time.sleep(10)
 #update data ----------------------------------------------------------------------------------------------------------
 def updatedatalulus(db):
     print("Update Data Yg Tidak Remidial")
@@ -141,7 +132,7 @@ def updatedatanolulus(db):
     data1c = input("Masukan Nis siswa :")
     data2c = input("Masukan Mapel Baru :")
     data3c = input("Masukan Nilai Baru :")
-    sql = "UPDATE nolulus SET MAPEL=%s, NILAI=%s WHERE NIS=%s"
+    sql = "UPDATE siswa SET MAPEL=%s, NILAI=%s WHERE NIS=%s"
     val = (data2c, data3c, data1c)
     cursor.execute(sql, val)
     db.commit()
@@ -267,7 +258,7 @@ def deletetdklulus(db):
     cursor = db.cursor()
     lihatdatanolulus(db)
     no = input("Pilih NIS data yg mau di DELETE :")
-    sql = "DELETE FROM nolulus WHERE NIS=%s"
+    sql = "DELETE FROM siswa WHERE NIS=%s"
     val = (no,)
     cursor.execute(sql, val)
     db.commit()
@@ -389,4 +380,5 @@ def Menu():
         print("Maaf Input Salah")
 #----------------------------------------------------------------------------------------------------------------------
 Menu()
+
 
