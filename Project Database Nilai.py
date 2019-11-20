@@ -36,21 +36,27 @@ def nilailulus(db):
     data5 = (data1, data2, data3, data4)
     cursor = db.cursor()
     if data4 >= 75:
-        sql = "INSERT INTO siswa (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
-        while data4 > 100:
-            exit("Maaf Input Melebihi Maximal 100")
-        cursor.execute(sql, data5)
-        db.commit()
-        print("{} Data berhasil di masukan".format(cursor.rowcount))
+        try:
+            sql = "INSERT INTO siswa (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
+            while data4 > 100:
+                exit("Maaf Input Melebihi Maximal 100")
+            cursor.execute(sql, data5)
+            db.commit()
+            print("{} Data berhasil di masukan".format(cursor.rowcount))
+        except KeyboardInterrupt:
+            exit("[Exit]Keybord Interrupt")
 
     else:
         if data4 <= 74:
-            sql2 = "INSERT INTO nolulus (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
-            while data4 < 0:
-                exit("Maaf Input Melebihi Minimum 0")
-            cursor.execute(sql2, data5)
-            db.commit()
-            print("{} Data berhasil di masukan".format(cursor.rowcount))
+            try:
+                sql2 = "INSERT INTO nolulus (NIS, NAMA, MAPEL, NILAI) VALUES(%s, %s, %s, %s)"
+                while data4 < 0:
+                    exit("Maaf Input Melebihi Minimum 0")
+                cursor.execute(sql2, data5)
+                db.commit()
+                print("{} Data berhasil di masukan".format(cursor.rowcount))
+            except KeyboardInterrupt:
+                exit("[Exit]Keybord Interrupt")
 # Pemilihan Kembali ke Menu---------------------------------------------------------------------------------------------
     print("Apakah anda ingin kembali ke menu [Y/N]")
     print("Y. untuk kembali ke Menu semula")
@@ -383,5 +389,4 @@ def Menu():
         print("Maaf Input Salah")
 #----------------------------------------------------------------------------------------------------------------------
 Menu()
-
 
